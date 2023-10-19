@@ -1,0 +1,32 @@
+{
+  "dvr.skills": "Jobb",
+  "dvr.skills.progress": "%d / %d EXP",
+  "dvr.skills.inventory.back": "Förråd",
+
+  "dvr.skills.gathering": "Arbetare",
+  "dvr.skills.gathering.lumbering": "Skogsavverkning",
+  "dvr.skills.gathering.mining": "Brytning",
+  "dvr.skills.gathering.foraging": "Fodersökning",
+  "dvr.skills.gathering.fishing": "Fiske",
+
+  "dvr.skills.farming": "Bonde",
+  "dvr.skills.farming.cultivation": "Odling",
+  "dvr.skills.farming.animal_care": "Djurhållning",
+
+  "dvr.skills.merchant": "Handlare",
+  "dvr.skills.merchant.trading": "Handel",
+
+  "dvr.skills.explorer": "Utforskare",
+  "dvr.skills.explorer.dungeoneer": "Kryptanfallare",
+
+  "dvr.skills.combat": "Stridande",
+  "dvr.skills.combat.melee": "Närstrid",
+  "dvr.skills.combat.ranger": "Bågskytte",
+  "dvr.skills.combat.hunter": "Jägare",
+
+  "dvr.skills.crafting": "Hantverkare",
+  "dvr.skills.crafting.alchemy": "Alkemi",
+  "dvr.skills.crafting.enchanting": "Förtrollning",
+  "dvr.skills.crafting.metalwork": "Metallarbete",
+  "dvr.skills.crafting.cooking": "Matlagning"
+}

@@ -1,0 +1,47 @@
+{
+  "dvr.skills": "Skills",
+  "dvr.skills.progress": "%d / %d EXP",
+  "dvr.skills.inventory.back": "Inventory",
+
+  "dvr.skills.gathering": "Gatherer",
+  "dvr.skills.gathering.lumbering": "Lumbering",
+  "dvr.skills.gathering.lumbering.desc": "§7Earn experience by chopping down \ntrees and stripping logs",
+  "dvr.skills.gathering.mining": "Mining",
+  "dvr.skills.gathering.mining.desc": "§7Earn experience by mining ores \nand crystals",
+  "dvr.skills.gathering.foraging": "Foraging",
+  "dvr.skills.gathering.foraging.desc": "§7Earn experience by harvesting \nberries",
+  "dvr.skills.gathering.fishing": "Fishing",
+  "dvr.skills.gathering.fishing.desc": "§7Earn experience by catching fish",
+
+  "dvr.skills.farming": "Farmer",
+  "dvr.skills.farming.cultivation": "Cultivation",
+  "dvr.skills.farming.cultivation.desc": "§7Earn experience by growing and \nharvesting crops and gourds",
+  "dvr.skills.farming.animal_care": "Animal Husbandry",
+  "dvr.skills.farming.animal_care.desc": "§7Earn experience by taming, \nfeeding and breeding animals",
+
+  "dvr.skills.merchant": "Merchant",
+  "dvr.skills.merchant.trading": "Trading",
+  "dvr.skills.merchant.trading.desc": "§7Earn experience by making deals \nwith villagers",
+
+  "dvr.skills.explorer": "Explorer",
+  "dvr.skills.explorer.dungeoneer": "Dungeoneer",
+  "dvr.skills.explorer.dungeoneer.desc": "§7Earn experience by looting \nchests from generated structures",
+
+  "dvr.skills.combat": "Combatant",
+  "dvr.skills.combat.melee": "Melee",
+  "dvr.skills.combat.melee.desc": "§7Earn experience by killing mobs \nwith melee weapons",
+  "dvr.skills.combat.ranger": "Ranger",
+  "dvr.skills.combat.ranger.desc": "§7Earn experience by killing mobs \nwith ranged weapons",
+  "dvr.skills.combat.hunter": "Hunter",
+  "dvr.skills.combat.hunter.desc": "§7Earn experience by killing \nspecial mobs and bosses",
+
+  "dvr.skills.crafting": "Crafter",
+  "dvr.skills.crafting.alchemy": "Alchemy",
+  "dvr.skills.crafting.alchemy.desc": "§7Earn experience by brewing \npotions",
+  "dvr.skills.crafting.enchanting": "Enchanting",
+  "dvr.skills.crafting.enchanting.desc": "§7Earn experience by enchanting \nitems",
+  "dvr.skills.crafting.metalwork": "Metalwork",
+  "dvr.skills.crafting.metalwork.desc": "§7Earn experience by repairing \nweapons on an anvil or grindstone",
+  "dvr.skills.crafting.cooking": "Cooking",
+  "dvr.skills.crafting.cooking.desc": "§7Earn experience by crafting \nbaked goods"
+}

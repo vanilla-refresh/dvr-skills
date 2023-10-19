@@ -1,0 +1,44 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/exp_bar_long_empty"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/exp_bar_long_empty_hovered"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/exp_bar_long_full"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/exp_bar_long_full_hovered"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/exp_bar_short_empty"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/exp_bar_short_full"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/exp_bar_short_gain"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/pin_selected"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/pin_unselected"
+    },
+    {
+      "type": "single",
+      "resource": "dvr-skills:menu/window_decor"
+    }
+  ]
+}
