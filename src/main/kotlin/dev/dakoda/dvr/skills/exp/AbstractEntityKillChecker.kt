@@ -50,7 +50,9 @@ abstract class AbstractEntityKillChecker(
 
     override fun resolve(params: EntityKillParams, order: Order): EXPGain? {
         val weaponUsed = params.player.mainHandStack
-        val targetSkill = if (checkerSkill == HUNTER) HUNTER else {
+        val targetSkill = if (checkerSkill == HUNTER) {
+            HUNTER
+        } else {
             if (weaponUsed.isIn(BOWS) or weaponUsed.isIn(SPEARS)) RANGER else MELEE
         }
 

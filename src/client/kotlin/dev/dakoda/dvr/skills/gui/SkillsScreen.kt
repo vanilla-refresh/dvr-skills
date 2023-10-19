@@ -66,12 +66,17 @@ class SkillsScreen : Screen(Text.literal("Skills")) {
             addDrawable(blankPage())
         } else {
             val content = activeCategoryContent
-            addDrawable(Drawable { context, _, _, _ ->
-                context.drawGuiTexture(WINDOW,
-                    window.leftOfInventory + 22, window.topOfInventory - 3,
-                    176, 166
-                )
-            })
+            addDrawable(
+                Drawable { context, _, _, _ ->
+                    context.drawGuiTexture(
+                        WINDOW,
+                        window.leftOfInventory + 22,
+                        window.topOfInventory - 3,
+                        176,
+                        166
+                    )
+                }
+            )
             content.getDrawables(skills, discoveries).forEach { addDrawable(it) }
             content.getDrawableChildren(skills, discoveries).forEach { addDrawableChild(it) }
         }

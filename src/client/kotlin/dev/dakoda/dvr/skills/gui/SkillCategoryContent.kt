@@ -74,7 +74,7 @@ class SkillCategoryContent(
                         titleX(),
                         titleY(index),
                         0x000000,
-                        false,
+                        false
                     )
                 }
             )
@@ -98,7 +98,8 @@ class SkillCategoryContent(
             ) {
                 override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
                     val isTracked = COMP_SKILLS_TRACKED.get(game.player!!).trackedSkills[exp.skill] == 1
-                    val pinTex = Identifier("dvr-skills",
+                    val pinTex = Identifier(
+                        "dvr-skills",
                         "menu/pin_${if (isTracked) "" else "un"}selected"
                     )
                     context.drawGuiTexture(pinTex, x, y, 10, 10)
@@ -155,9 +156,9 @@ class SkillCategoryContent(
                         context.drawTooltip(
                             game.textRenderer,
                             listOf(
-                                Text.translatable("dvr.skills.progress", exp.raw, Skills.EXP.perLevel),
+                                Text.translatable("dvr.skills.progress", exp.raw, Skills.EXP.perLevel)
 //                                Text.translatable("${translationPrefix}.${exp.skill.name.lowercase()}.desc"),
-                            ) + Text.translatable("${translationPrefix}.${exp.skill.name.lowercase()}.desc").string.split("\n").map {
+                            ) + Text.translatable("$translationPrefix.${exp.skill.name.lowercase()}.desc").string.split("\n").map {
                                 Text.literal("§7$it")
                             },
                             mouseX,

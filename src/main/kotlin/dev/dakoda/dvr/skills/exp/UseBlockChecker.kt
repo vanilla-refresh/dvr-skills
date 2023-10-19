@@ -12,7 +12,6 @@ import net.minecraft.block.Blocks.STRIPPED_MANGROVE_LOG
 import net.minecraft.block.Blocks.STRIPPED_OAK_LOG
 import net.minecraft.block.Blocks.STRIPPED_SPRUCE_LOG
 import net.minecraft.registry.tag.BlockTags
-import net.minecraft.registry.tag.ItemTags
 import net.minecraft.registry.tag.ItemTags.AXES
 import net.minecraft.state.property.Properties
 

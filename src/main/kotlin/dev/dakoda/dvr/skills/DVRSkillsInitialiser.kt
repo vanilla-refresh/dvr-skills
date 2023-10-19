@@ -31,111 +31,111 @@ import kotlin.io.path.pathString
 
 class DVRSkillsInitialiser : ModInitializer {
 
-	override fun onInitialize() {
-		LOGGER = LogManager.getLogger(DVRSkills.modID)
+    override fun onInitialize() {
+        LOGGER = LogManager.getLogger(DVRSkills.modID)
 
-		try {
-			val root = FabricLoader.getInstance().configDir.pathString
+        try {
+            val root = FabricLoader.getInstance().configDir.pathString
 
-			Files.createDirectories(Paths.get("$root/dmo"))
-			Files.createDirectories(Paths.get("$root/dmo/skills"))
+            Files.createDirectories(Paths.get("$root/dmo"))
+            Files.createDirectories(Paths.get("$root/dmo/skills"))
 
-			val configPath = "$root/dmo/skills/config.json"
-			val configFile = File(configPath)
+            val configPath = "$root/dmo/skills/config.json"
+            val configFile = File(configPath)
 
-			val gson = GsonBuilder().setPrettyPrinting().create()
-			if (!configFile.exists()) {
-				val defaultConfig = DVRSkillsConfig.default
-				val asJson = gson.toJson(defaultConfig)
-				configFile.writeText(asJson)
-			}
+            val gson = GsonBuilder().setPrettyPrinting().create()
+            if (!configFile.exists()) {
+                val defaultConfig = DVRSkillsConfig.default
+                val asJson = gson.toJson(defaultConfig)
+                configFile.writeText(asJson)
+            }
 
-			val json = configFile.readText()
-			CONFIG = gson.fromJson(json, DVRSkillsConfig::class.java)
-			// Updates the file with any new config values
-			configFile.writeText(gson.toJson(CONFIG))
-		} catch (e: Exception) {
-			LOGGER.error("Severe failure when reading/writing from mod config file, using default config for now. You should fix that.")
-			LOGGER.error(e)
-			CONFIG = DVRSkillsConfig.default
-		}
+            val json = configFile.readText()
+            CONFIG = gson.fromJson(json, DVRSkillsConfig::class.java)
+            // Updates the file with any new config values
+            configFile.writeText(gson.toJson(CONFIG))
+        } catch (e: Exception) {
+            LOGGER.error("Severe failure when reading/writing from mod config file, using default config for now. You should fix that.")
+            LOGGER.error(e)
+            CONFIG = DVRSkillsConfig.default
+        }
 
-		initialiseCheckers()
+        initialiseCheckers()
 
-		PlayerBlockBreakEvents.AFTER.register { world, player, blockPos, blockState, blockEntity ->
-			if (player.isSurvival) {
-				BreakBlockChecker.resolve(
-					BreakBlockParams(
-						world,
-						player.mainHandStack,
-						blockPos,
-						blockState,
-						blockEntity
-					),
-					order = AFTER
-				)?.let {
-					DVRSkills.gainEXP(player, it)
-				}
-			}
-		}
+        PlayerBlockBreakEvents.AFTER.register { world, player, blockPos, blockState, blockEntity ->
+            if (player.isSurvival) {
+                BreakBlockChecker.resolve(
+                    BreakBlockParams(
+                        world,
+                        player.mainHandStack,
+                        blockPos,
+                        blockState,
+                        blockEntity
+                    ),
+                    order = AFTER
+                )?.let {
+                    DVRSkills.gainEXP(player, it)
+                }
+            }
+        }
 
-		PlayerBlockBreakEvents.BEFORE.register { world, player, blockPos, blockState, blockEntity ->
-			if (player.isSurvival) {
-				BreakBlockChecker.resolve(
-					BreakBlockParams(
-						world,
-						player.mainHandStack,
-						blockPos,
-						blockState,
-						blockEntity
-					),
-					order = BEFORE
-				)?.let {
-					DVRSkills.gainEXP(player, it)
-				}
-			}
-			true
-		}
+        PlayerBlockBreakEvents.BEFORE.register { world, player, blockPos, blockState, blockEntity ->
+            if (player.isSurvival) {
+                BreakBlockChecker.resolve(
+                    BreakBlockParams(
+                        world,
+                        player.mainHandStack,
+                        blockPos,
+                        blockState,
+                        blockEntity
+                    ),
+                    order = BEFORE
+                )?.let {
+                    DVRSkills.gainEXP(player, it)
+                }
+            }
+            true
+        }
 
-		ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register { world, entity, killedEntity ->
-			if (entity is PlayerEntity && entity.isSurvival) {
-				EntityKillChecker.resolve(EntityKillParams(world, entity, killedEntity), order = DONT_CARE)?.let {
-					DVRSkills.gainEXP(entity, it)
-				}
-				EntityHuntChecker.resolve(EntityKillParams(world, entity, killedEntity), order = DONT_CARE)?.let {
-					DVRSkills.gainEXP(entity, it)
-				}
-			}
-		}
+        ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register { world, entity, killedEntity ->
+            if (entity is PlayerEntity && entity.isSurvival) {
+                EntityKillChecker.resolve(EntityKillParams(world, entity, killedEntity), order = DONT_CARE)?.let {
+                    DVRSkills.gainEXP(entity, it)
+                }
+                EntityHuntChecker.resolve(EntityKillParams(world, entity, killedEntity), order = DONT_CARE)?.let {
+                    DVRSkills.gainEXP(entity, it)
+                }
+            }
+        }
 
-		UseBlockCallback.EVENT.register { player, world, _, entityHitResult ->
-			if (player.isSurvival) {
-				UseBlockChecker.resolve(
-					UseBlockParams(
-						player.mainHandStack,
-						world,
-						world.getBlockState(entityHitResult.blockPos),
-						entityHitResult.blockPos
-					),
-					order = DONT_CARE
-				)?.let {
-					DVRSkills.gainEXP(player, it)
-				}
-			}
-			return@register PASS
-		}
-	}
+        UseBlockCallback.EVENT.register { player, world, _, entityHitResult ->
+            if (player.isSurvival) {
+                UseBlockChecker.resolve(
+                    UseBlockParams(
+                        player.mainHandStack,
+                        world,
+                        world.getBlockState(entityHitResult.blockPos),
+                        entityHitResult.blockPos
+                    ),
+                    order = DONT_CARE
+                )?.let {
+                    DVRSkills.gainEXP(player, it)
+                }
+            }
+            return@register PASS
+        }
+    }
 
-	private val PlayerEntity.isSurvival get() = !this.isCreative && !this.isSpectator
+    private val PlayerEntity.isSurvival get() = !this.isCreative && !this.isSpectator
 
-	private fun initialiseCheckers() {
-		BreakBlockChecker; EntityHuntChecker; EntityKillChecker; FishingChecker
+    private fun initialiseCheckers() {
+        BreakBlockChecker; EntityHuntChecker; EntityKillChecker; FishingChecker
 
-		if (FabricLoader.getInstance().isModLoaded("dmo-cooking")) {
-			CONFIG.exp.cooking.overridden = true
-			println("Cooking EXP has been overridden by dmo-cooking; disabling crafting hooks")
-		} else {
-			CookingChecker
-		}
-	}
+        if (FabricLoader.getInstance().isModLoaded("dmo-cooking")) {
+            CONFIG.exp.cooking.overridden = true
+            println("Cooking EXP has been overridden by dmo-cooking; disabling crafting hooks")
+        } else {
+            CookingChecker
+        }
+    }
 }
