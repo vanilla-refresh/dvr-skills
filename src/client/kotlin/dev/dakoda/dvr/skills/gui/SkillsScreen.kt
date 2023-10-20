@@ -62,21 +62,21 @@ class SkillsScreen : Screen(Text.literal("Skills")) {
                 }
             )
         }
+        addDrawable(
+            Drawable { context, _, _, _ ->
+                context.drawGuiTexture(
+                    WINDOW,
+                    window.leftOfInventory + 22,
+                    window.topOfInventory - 3,
+                    176,
+                    166
+                )
+            }
+        )
         if (!TrackLastCategory.set) {
             addDrawable(blankPage())
         } else {
             val content = activeCategoryContent
-            addDrawable(
-                Drawable { context, _, _, _ ->
-                    context.drawGuiTexture(
-                        WINDOW,
-                        window.leftOfInventory + 22,
-                        window.topOfInventory - 3,
-                        176,
-                        166
-                    )
-                }
-            )
             content.getDrawables(skills, discoveries).forEach { addDrawable(it) }
             content.getDrawableChildren(skills, discoveries).forEach { addDrawableChild(it) }
         }
@@ -90,6 +90,15 @@ class SkillsScreen : Screen(Text.literal("Skills")) {
     fun blankPage(): Drawable {
         return Drawable { context, _, _, _ ->
             windowDecor(context)
+            val orderedText = Text.translatable("dvr.skills.no.discovered").asOrderedText()
+            context.drawText(
+                game.textRenderer,
+                orderedText,
+                (game.window.scaledWidth / 2) - (game.textRenderer.getWidth(orderedText) / 2),
+                (game.window.scaledHeight / 2) - (game.textRenderer.fontHeight / 2),
+                0x666666,
+                false
+            )
         }
     }
 

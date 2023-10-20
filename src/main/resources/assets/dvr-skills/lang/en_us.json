@@ -2,6 +2,7 @@
   "dvr.skills": "Skills",
   "dvr.skills.progress": "%d / %d EXP",
   "dvr.skills.inventory.back": "Inventory",
+  "dvr.skills.no.discovered": "No skills discovered so far...",
 
   "dvr.skills.gathering": "Gatherer",
   "dvr.skills.gathering.lumbering": "Lumbering",
